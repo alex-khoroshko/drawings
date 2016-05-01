@@ -1,12 +1,12 @@
 guideDia = 25;
-fillWall=1;
+fillWall=1.2;
 contactWidth=3;
 contactThickness=2;
 gapWidth=2;
-externDia = 40;
+externDia = 45;
 externWall = 3;
 bearingHeight=40;
-cutout = 1;//0-нет выреза, 1 - есть
+cutout = 0;//0-нет выреза, 1 - есть
 
 pi = 3.141592653589793238;
 $fn = 100;
