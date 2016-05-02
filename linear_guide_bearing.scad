@@ -1,4 +1,4 @@
-guideDia = 25.2;
+guideDia = 25;
 fillWall=1.2;
 contactWidth=3;
 contactThickness=2;
@@ -17,7 +17,7 @@ springExtDia = 7.5;
 springCompressedLen = 10;
 
 pi = 3.141592653589793238;
-$fn = 100;
+$fn = 150;
 
 //вычислим число опор с округлением в меньшую сторону
 num = floor(pi*guideDia/(contactWidth+gapWidth));
@@ -29,16 +29,6 @@ contactAngle = 360*contactWidth/(pi*guideDia);
 gapAngle = 360*gapWidthRounded/(pi*guideDia);
 echo(contactAngle);
 echo(gapWidthRounded);
-/*
-intersection () {
-
-    for(angle = [0 : contactAngle+gapAngle : 360]) {
-        p1 = [externDia*cos(angle),externDia*sin(angle)];
-        p2 = [externDia*cos(angle+contactAngle),externDia*sin(angle+contactAngle)];
-        polygon(points=[[0,0],p1,p2]);
-    }
-
-}*/
 
 module shape () {
 
@@ -79,6 +69,7 @@ module springCarrier () {
         translate([(tunerWidth+externDia)/2,0,bearingHeight/4])
         rotate([-90,0,0]) {
             translate([0,0,springCompressedLen])
+            linear_extrude (height=fillWall)
             circle (r=fillWall+springExtDia/2);
             linear_extrude (height=springCompressedLen)
             difference () {
